@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class AppleTree : MonoBehaviour
 {
-    [Header("Set in Inspector")]
+    //[Header("Set in Inspector")]
+
     public GameObject applePrefab;
     public float speed = 1f;
     public float leftAndRightEdge = 10f;
     public float chanceToChangeDirections = 0.1f;
     public float secondsBetweenAppleDrops = 1f;
+    public static float bottomY = -20f;
     // Start is called before the first frame update
     
     void Start()
@@ -21,7 +23,7 @@ public class AppleTree : MonoBehaviour
     void DropApple() {
         GameObject apple = Instantiate<GameObject>;
         apple.transform.position = transform.position;
-        Invoke( "DropApple", secondsBetweenAppleDrops)
+        Invoke( "DropApple", secondsBetweenAppleDrops );
     }
     // Update is called once per frame
     void Update()
