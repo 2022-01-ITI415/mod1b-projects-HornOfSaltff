@@ -676,7 +676,7 @@ MonoBehaviour:
   speed: 15
   leftAndRightEdge: 20
   chanceToChangeDirections: 0.1
-  secondsBetweenAppleDrops: 0.6
+  secondsBetweenAppleDrops: 0.65
 --- !u!1001 &4843588497022869347
 PrefabInstance:
   m_ObjectHideFlags: 0
