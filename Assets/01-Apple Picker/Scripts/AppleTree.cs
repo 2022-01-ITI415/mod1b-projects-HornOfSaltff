@@ -12,6 +12,7 @@ public class AppleTree : MonoBehaviour {
 
     public GameObject   applePrefab;
 
+
                    
     // Speed at which the AppleTree moves
 
@@ -37,11 +38,15 @@ public class AppleTree : MonoBehaviour {
 
 
                    
-    void Start () {
+  void Start () {
 
         // Dropping apples every second
-        Invoke( "DropApple", 2f );
+
+        Invoke( "DropApple", 2f );                                      // a
+
     }
+
+
 
     void DropApple() {                                                  // b
 
@@ -52,6 +57,7 @@ public class AppleTree : MonoBehaviour {
         Invoke( "DropApple", secondsBetweenAppleDrops );                // e
 
     }
+
 
                    
     void Update () {
@@ -76,7 +82,6 @@ public class AppleTree : MonoBehaviour {
            speed = -Mathf.Abs(speed); // Move left                    // c
 
        }
-
     }
     void FixedUpdate() {
 
