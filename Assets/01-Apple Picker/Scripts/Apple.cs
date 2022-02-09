@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class Apple : MonoBehaviour {
 
+    [Header("Set in Inspector")]  
+
     public static float     bottomY = -20f;                                  // a
 
 
@@ -18,6 +20,13 @@ public class Apple : MonoBehaviour {
 
             Destroy( this.gameObject );                                      // b
 
+            // Get a reference to the ApplePicker component of Main Camera
+
+            ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();  // b
+
+            // Call the public AppleDestroyed() method of apScript
+
+            apScript.AppleDestroyed();
         }
 
     }
