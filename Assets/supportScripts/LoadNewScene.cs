@@ -13,7 +13,7 @@ public class LoadNewScene : MonoBehaviour
 
     public void LoadScene2()
     {
-        SceneManager.LoadScene("Main-MissionDemolition");
+        SceneManager.LoadScene("_MDScene_0");
     }
 
     public void LoadScene3()
