@@ -8,28 +8,21 @@ public class Slingshot : MonoBehaviour {
 
     // fields set in the Unity Inspector pane
     static private Slingshot S;  
-    [Header("Set in Inspector")]                                            // a
+    [Header("Set in Inspector")]                                           
 
     public GameObject prefabProjectile;
     public float velocityMult = 8f;
-
-
-
     // fields set dynamically
 
-    [Header("Set Dynamically")]                                             // a
+    [Header("Set Dynamically")]                                            
 
     public GameObject launchPoint;
-
-    public Vector3 launchPos;                                   // b
-
-    public GameObject projectile;                                  // b
-
+    public Vector3 launchPos;                                   
+    public GameObject projectile;                                  
     public bool aimingMode; 
-
     private Rigidbody projectileRigidbody; 
 
-    static public Vector3 LAUNCH_POS {                                        // b
+    static public Vector3 LAUNCH_POS {                                       
 
         get {
 
@@ -43,81 +36,47 @@ public class Slingshot : MonoBehaviour {
 
     void Awake() {
         S = this;
-
-        Transform launchPointTrans = transform.Find("LaunchPoint");              // a
-
+        Transform launchPointTrans = transform.Find("LaunchPoint");              
         launchPoint = launchPointTrans.gameObject;
-
         launchPoint.SetActive( false );
-        
-        launchPos = launchPointTrans.position;                                          // b
+        launchPos = launchPointTrans.position;                                          
 
     }
 
     void OnMouseEnter() {
-
         //print("Slingshot:OnMouseEnter()");
         launchPoint.SetActive( true );
-
     }
 
     void OnMouseExit() {
-
         //print("Slingshot:OnMouseExit()");
         launchPoint.SetActive( false );
-
     }
 
-    void OnMouseDown() {                                                    // d
-
+    void OnMouseDown() {                                                    
         // The player has pressed the mouse button while over Slingshot
-
         aimingMode = true;
-
         // Instantiate a Projectile
-
         projectile = Instantiate( prefabProjectile ) as GameObject;
-
         // Start it at the launchPoint
-
         projectile.transform.position = launchPos;
-
         // Set it to isKinematic for now
-
         projectile.GetComponent<Rigidbody>().isKinematic = true;
-
-        projectileRigidbody = projectile.GetComponent<Rigidbody>();                // a
-
+        projectileRigidbody = projectile.GetComponent<Rigidbody>();                
         projectileRigidbody.isKinematic = true;
-
     }
 
     void Update() {
-
         // If Slingshot is not in aimingMode, don't run this code
-
-        if (!aimingMode) return;                                                   // b
-
-
-
+        if (!aimingMode) return;                                                   
         // Get the current mouse position in 2D screen coordinates
-
-        Vector3 mousePos2D = Input.mousePosition;                                  // c
-
+        Vector3 mousePos2D = Input.mousePosition;                                  
         mousePos2D.z = -Camera.main.transform.position.z;
-
         Vector3 mousePos3D = Camera.main.ScreenToWorldPoint( mousePos2D );
-
-
-
         // Find the delta from the launchPos to the mousePos3D
-
         Vector3 mouseDelta = mousePos3D-launchPos;
-
-        // Limit mouseDelta to the radius of the Slingshot SphereCollider          // d
-
+        // Limit mouseDelta to the radius of the Slingshot SphereCollider          
         float maxMagnitude = this.GetComponent<SphereCollider>().radius;
-
         if (mouseDelta.magnitude > maxMagnitude) {
 
             mouseDelta.Normalize();
@@ -150,6 +109,10 @@ public class Slingshot : MonoBehaviour {
             FollowCam.POI = projectile;
 
             projectile = null;
+            
+            MissionDemolition.ShotFired();                             // a
+
+            ProjectileLine.S.poi = projectile; 
 
         }
 
