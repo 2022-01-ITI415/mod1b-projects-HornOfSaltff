@@ -27,11 +27,12 @@ public class GoalPoint : MonoBehaviour
 
             mat.color = c;
 
-
-        }
-        if (Goal.goalMet == true){
             SceneManager.LoadScene("Main-Prototype 1");
         }
+        
+        //if (Goal.goalMet == true){
+        //    SceneManager.LoadScene("Main-Prototype 1");
 
+       // }
     }
 }
