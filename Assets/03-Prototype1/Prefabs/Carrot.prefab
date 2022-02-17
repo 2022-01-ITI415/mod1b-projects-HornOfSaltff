@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 6890498968402551899}
   m_Layer: 0
   m_Name: Carrot
-  m_TagString: Untagged
+  m_TagString: Carrot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -428,6 +428,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e1428b3f5ba5448885fc10dd89def1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  leftAndRightEdge: 3
+  chanceToChangeDirections: 0.1
 --- !u!65 &6890498968402551899
 BoxCollider:
   m_ObjectHideFlags: 0
