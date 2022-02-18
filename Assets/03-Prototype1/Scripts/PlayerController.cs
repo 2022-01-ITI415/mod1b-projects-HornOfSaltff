@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
 	}
     void SetCountText()
 	{
-		countText.text = "Score: " + countText.ToString();
+		countText.text = "Score: " + scoreCount.ToString();
         HighScore.text = "High Score: " + playerHS.ToString();
 
 		
