@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private int playerHS;
     //
 
+    public AudioSource pudding;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -87,7 +89,7 @@ public class PlayerController : MonoBehaviour
             //    HighScoreP.score = score;
             //}
             scoreCount = scoreCount + 500;
-
+            pudding.Play();
 			// Run the 'SetCountText()' function (see below)
 			SetCountText ();
 
